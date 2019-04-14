@@ -1,6 +1,4 @@
-/************************
- ** Line 86, Create a startgame function and it has been called as a callback function in line 86
- ***************/
+
 
 (function () {
     var activePlayer, player, playerSign;
