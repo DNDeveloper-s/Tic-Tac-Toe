@@ -11,36 +11,42 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="upp_cont showStart">
+        <div class="upp_cont showStart">  <!-- showStart class should be active -->
+            <div class="cursor trans_hide">
+                <p>Player-1</p>
+            </div>
             <div class="init-container">
                 <h2>Tic Tac Toe</h2>
                 <div class="choose-player">
-                    <input class="playerName0 toLeft" type="text" placeholder="Enter your name">
-                    <input class="playerName1 toRight" type="text" placeholder="Enter your name">
+                    <input class="playerName0 toLeft" type="text" placeholder="Enter your name" value="Saurabh">
+                    <input class="playerName1 toRight" type="text" placeholder="Enter your name" value="Suraj">
                 </div>
                 <div class="input-group mt mb">
-                    <button class="x mr active">X</button>
-                    <button class="o unactive">O</button>
+                    <button class="x mr active hvr">X</button> <!--active class should be active-->
+                    <button class="o unactive hvr">O</button> <!-- unactive class should be active-->
                 </div>
                 <div class="startGame">
-                    <button class="start"></button>
+                    <button class="start hvr"></button>
                 </div>
             </div>
         </div>
 
         <div class="low_cont">
             <div class="details">
-                <div class="player-0 player mr active">
+                <div class="player-0 player mr active"> <!--active class should be active-->
                     <p></p>
                 </div>
-                <div class="player-1 player unactive">
+                <div class="player-1 player unactive"><!--unactive class should be active-->
                     <p></p>
                 </div>
-                <div class="winner hide">
+                <div class="winner hide"><!--hide class should be active-->
                     <p>Winner</p>
                 </div>
+                <div class="restart trans_hide hvr"><!--trans_hide class should be active-->
+                    <p>Restart</p>
+                </div>
             </div>
-            <div class="container mb">
+            <div class="container mbl">
                 <div class="box box-1"></div>
                 <div class="box box-2"></div>
                 <div class="box box-3"></div>
@@ -56,6 +62,23 @@
 
 
     <!-- Java Scripts -->
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script src="js/app.js"></script>
+    <script>
+        
+        $('document').ready(function() {
+            var cursor = $('.cursor');
+
+            $('.upp_cont').on('mousemove', function(e) {
+                $(cursor).css({
+                    'top': e.pageY,
+                    'left': e.pageX
+                })
+            })
+            
+
+        })
+
+    </script>
 </body>
 </html>

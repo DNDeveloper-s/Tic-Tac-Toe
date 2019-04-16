@@ -11,5 +11,8 @@
     "url": "Tic Tac Toe Game"
   },
   "author": "Saurabh Singh",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.4.0"
+  }
 }
