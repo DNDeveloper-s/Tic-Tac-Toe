@@ -21,12 +21,18 @@
                     <input class="playerName0 active toLeft" type="text" placeholder="Enter your name" value="Saurabh">
                     <input class="playerName1 unactive toRight" type="text" placeholder="Enter your name" value="Suraj">
                 </div>
+
                 <div class="input-group mt mb">
                     <button class="x active">X</button> <!--active class should be active-->
                     <button class="o unactive">O</button> <!-- unactive class should be active-->
                 </div>
+
                 <div class="startGame mt">
                     <button class="start hvr"></button>
+                </div>
+
+                <div class="flipChoice">
+                    <button class="flipOption hvr">Don't Fight.. Go for Toss?</button>
                 </div>
             </div>
         </div>
@@ -57,6 +63,37 @@
                 <div class="box box-8"></div>
                 <div class="box box-9"></div>
             </div>
+            <div class="scores">
+                <div class="score score-1 active">
+                    
+                </div>
+                <div class="score score-2 unactive">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="coin trans_hide"><!--trans_hide class should be active-->
+            <div class="close_coin">X</div>
+            <div class="coin_details">
+                <span class="playerCoin player1Coin active"></span><span class="coin_content coin1_content"></span>
+            </div>
+            <div class="coin_winner trans_hide">
+                <p><span class="coinWinner active"></span>, is the Winner. First Turn will be of him</p>
+            </div>
+            <div class="coin_front">
+                <img class="coin_img" src="./images/coin_front.png" alt="">
+            </div>
+            <div class="coin_back">
+                <img class="coin_img" src="./images/coin_back.png" alt="">
+            </div>
+            <div class="coin_choices">
+                <span class="playerCoin player2Coin unactive"></span><span class="coin_content coin2_content"></span>
+                <div class="choices mt">
+                    <button class="front hvr mr">Front</button>
+                    <button class="back hvr ml">Back</button>
+                </div>
+            </div>
+            <button class="flipBtn trans_hide">Flip Coin</button>
         </div>
     </div>
 
