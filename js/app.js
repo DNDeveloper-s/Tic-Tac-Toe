@@ -13,43 +13,59 @@
     const details = document.querySelector('.details');
     const uppCont = document.querySelector('.upp_cont');
     const cursor = document.querySelector('.cursor');
-
-    const Player = function (name, sign) {
-        this.name = name;
-        this.sign = sign;
-    }
+    const dispplayer0 = document.querySelector('.player-0');
+    const dispplayer1 = document.querySelector('.player-1');
 
     var Data = {
         player1: {
-            name: '',
-            sign: ''
+            name: null,
+            sign: null,
+            color: null
         },
         player2: {
-            name: '',
-            sign: ''
+            name: null,
+            sign: null,
+            color: null
         }
     }
 
-    const chooseSign = function () {
-
-    }
-    
-    const getSign = function() {
+    const getSign = function () {
         uppCont.addEventListener('click', function (e) {
-            if(e.target == x) {
-                sign_0 = 'X';
-                sign_1 = 'O';
+            if (e.target == x) {
+                Data.player1.sign = `<p style="color: #2797A7;">X</p>`;
+                Data.player2.sign = `<p style="color: #ff5e4c;">O</p>`;
+                Data.player1.color = '#2797A7';
+                Data.player2.color = '#ff5e4c';
+                o.classList.remove('left');
+                x.classList.remove('right');
+                player0.classList.add('active');
+                player0.classList.remove('unactive');
+                player1.classList.remove('active');
+                player1.classList.add('unactive');
+
+                dispplayer0.classList.add('active');
+                dispplayer0.classList.remove('unactive');
+                dispplayer1.classList.remove('active');
+                dispplayer1.classList.add('unactive');
             } else
-            if(e.target == o) {
-                sign_0 = 'O';
-                sign_1 = 'X';
-            } 
+            if (e.target == o) {
+                Data.player2.sign = `<p style="color: #2797A7;">X</p>`;
+                Data.player1.sign = `<p style="color: #ff5e4c;">O</p>`;
+                Data.player1.color = '#2797A7';
+                Data.player2.color = '#ff5e4c';
+                o.classList.add('left');
+                x.classList.add('right');
+                player0.classList.remove('active');
+                player0.classList.add('unactive');
+                player1.classList.add('active');
+                player1.classList.remove('unactive');
+
+                dispplayer0.classList.remove('active');
+                dispplayer0.classList.add('unactive');
+                dispplayer1.classList.add('active');
+                dispplayer1.classList.remove('unactive');
+            }
         });
-        
-        // return {
-        //     sign1: sign_0,
-        //     sign2: sign_1
-        // }
     }
 
 
@@ -65,33 +81,8 @@
 
         show1.innerHTML = `<p>${player1.value}</p>`;
 
-
-        // Choosing Player
-        
-
-        return {
-            name1: player0.value,
-            name2: player1.value
-        }
-    }
-
-    const updatePlayerData = function() {
-        var names = playerNames();
-        var signs = getSign();
-        // Player-1 Data
-        var Player1 = new Player(names.name1, signs.sign1);
-
-
-        // Player-2 Data
-        var Player2 = new Player(names.name2, signs.sign2);
-
-        console.log(Player1);
-        console.log(Player2);
-
-        return {
-            player1: Player1,
-            player2: Player2
-        }
+        Data.player1.name = player0.value;
+        Data.player2.name = player1.value;
     }
 
     const showSign = function (sign) {
@@ -111,13 +102,11 @@
 
         // Updating the UI
         if (activePlayer === 0) {
-            showSign(thisData.player1.sign);
-            // showSign('X');
+            showSign(Data.player2.sign);
             activePlayer = 1;
         } else
         if (activePlayer === 1) {
-            showSign(thisData.player2.sign);
-            // showSign('O');
+            showSign(Data.player1.sign);
             activePlayer = 0;
         }
     }
@@ -149,6 +138,7 @@
         uppCont.classList.toggle('showStart');
         player0.classList.toggle('toLeft');
         player1.classList.toggle('toRight');
+        // console.log(color);
 
         // Restart Button
         restartBtn.classList.add('trans_hide');
@@ -167,15 +157,20 @@
         }
 
         activePlayer = 0;
-        var thisData = updatePlayerData();
+        // var thisData = updatePlayerData();
+        getSign();
+        playerNames();
 
-        showSign(thisData.player1.sign);
+        showSign(Data.player1.sign);
     }
 
     const restartGame = function () {
         resetBoxes();
         activePlayer = 0;
-        showSign('O');
+        getSign();
+        playerNames();
+
+        showSign(Data.player1.sign);
 
         // Restart Button
         restartBtn.classList.add('trans_hide');
@@ -190,16 +185,14 @@
     }
 
     var winnerBg = function (v1, v2, v3) {
-        if (val(v1) == 'O') {
-            va(v1).classList.add('winner-bg');
-            va(v2).classList.add('winner-bg');
-            va(v3).classList.add('winner-bg');
-            winner.innerHTML = `<p>${player1.value} is the winner</p>`;
-        } else {
-            va(v1).classList.add('winner-bgBlue');
-            va(v2).classList.add('winner-bgBlue');
-            va(v3).classList.add('winner-bgBlue');
+        va(v1).classList.add('winner-bg');
+        va(v2).classList.add('winner-bg');
+        va(v3).classList.add('winner-bg');
+
+        if (val(v1) == Data.player1.sign) {
             winner.innerHTML = `<p>${player0.value} is the winner</p>`;
+        } else {
+            winner.innerHTML = `<p>${player1.value} is the winner</p>`;
         }
     }
 
@@ -262,7 +255,6 @@
             // Hiding the Winner Text and Classes
             winner.classList.add('hide');
             cur.classList.remove('winner-bg');
-            cur.classList.remove('winner-bgBlue');
         })
     }
 

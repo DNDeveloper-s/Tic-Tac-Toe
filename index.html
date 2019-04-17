@@ -16,16 +16,16 @@
                 <p>Player-1</p>
             </div>
             <div class="init-container">
-                <h2>Tic Tac Toe</h2>
+                <h2 class="mb">Tic Tac Toe</h2>
                 <div class="choose-player">
-                    <input class="playerName0 toLeft" type="text" placeholder="Enter your name" value="Saurabh">
-                    <input class="playerName1 toRight" type="text" placeholder="Enter your name" value="Suraj">
+                    <input class="playerName0 active toLeft" type="text" placeholder="Enter your name" value="Saurabh">
+                    <input class="playerName1 unactive toRight" type="text" placeholder="Enter your name" value="Suraj">
                 </div>
                 <div class="input-group mt mb">
-                    <button class="x mr active hvr">X</button> <!--active class should be active-->
-                    <button class="o unactive hvr">O</button> <!-- unactive class should be active-->
+                    <button class="x active">X</button> <!--active class should be active-->
+                    <button class="o unactive">O</button> <!-- unactive class should be active-->
                 </div>
-                <div class="startGame">
+                <div class="startGame mt">
                     <button class="start hvr"></button>
                 </div>
             </div>
@@ -75,7 +75,6 @@
                     'left': e.pageX
                 })
             })
-            
 
         })
 
