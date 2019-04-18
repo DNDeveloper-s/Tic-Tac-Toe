@@ -87,6 +87,9 @@
         coinBack.classList.remove('trans_hide');
         flipBtn.classList.add('trans_hide');
 
+        coinFront.style.transform = `translate(-50%, -50%) rotateY(0deg)`;
+        coinBack.style.transform = `translate(-50%, -50%) rotateY(0deg)`;
+
         coinWinnerContainer.classList.add('trans_hide');
     }
     
@@ -466,11 +469,10 @@
 
     const restartGame = function () {
         resetBoxes();
-        activePlayer = 0;
         getSign();
         playerNames();
 
-        showSign(Data.player1.sign);
+        getActivePlayer();
 
         // Restart Button
         restartBtn.classList.add('trans_hide');
